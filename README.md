@@ -63,11 +63,11 @@ fetch("http://myhost.com:8082/api/v1/mail/send", {
         'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-        'host': 'mail.myhost.dev',
+        'host': 'mail.myhost.com',
         'port': 25,
         'starttls': false,
         'auth': {
-            'mail': 'noreply@myhost.dev',
+            'mail': 'noreply@myhost.com',
             'password': 'mypassword'
         },
         'message': {
