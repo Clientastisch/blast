@@ -1,0 +1,8 @@
+version: '3'
+
+services:
+  server:
+    build: .
+    container_name: blast
+    ports:
+      - "8082:8080"
