@@ -9,9 +9,10 @@ public class SmtpMailer {
 
     private final Properties properties;
 
-    public SmtpMailer(String host, int port) {
+    public SmtpMailer(String host, int port, boolean starttls) {
         this.properties = new Properties();
         this.properties.put("mail.smtp.auth", "true");
+        this.properties.put("mail.smtp.starttls.enable", starttls);
         this.properties.put("mail.smtp.host", host);
         this.properties.put("mail.smtp.port", String.valueOf(port));
     }

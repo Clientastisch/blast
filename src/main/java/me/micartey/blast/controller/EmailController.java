@@ -21,13 +21,14 @@ public class EmailController {
     @CrossOrigin
     @PostMapping("send")
     public ResponseEntity<Response> onSend(@RequestBody MailBody mailBody) {
-        log.info("sending...");
+        log.info("preparing...");
 
         try {
             new SmtpMessage(
                     new SmtpMailer(
                             mailBody.getHost(),
-                            mailBody.getPort()
+                            mailBody.getPort(),
+                            mailBody.isStarttls()
                     ).createSession(
                             mailBody.getAuth().getMail(),
                             mailBody.getAuth().getPassword()
@@ -42,7 +43,7 @@ public class EmailController {
             return ResponseEntity.internalServerError().body(new ErrorResponse(exception.getMessage()));
         }
 
-        log.info("done!");
+        log.info("send!");
 
         return ResponseEntity.ok(null);
     }
