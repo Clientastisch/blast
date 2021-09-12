@@ -5,6 +5,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
+import java.util.Objects;
 import java.util.Properties;
 
 public class SmtpMailer {
@@ -37,6 +38,9 @@ public class SmtpMailer {
     }
 
     public void sendMessage(String recipient, String subject, String text) throws MessagingException {
+        Objects.requireNonNull(this.authentication);
+        Objects.requireNonNull(this.session);
+
         Message message = new MimeMessage(this.session);
         message.setFrom(new InternetAddress(this.authentication.getUserName()));
         message.setRecipients(
