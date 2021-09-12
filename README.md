@@ -28,6 +28,8 @@ $ git clone https://github.com/Clientastisch/blast
 $ docker-compose up
 ```
 
+Starts on port `:8082`
+
 ### 📦 standalone
 
 Make sure to have `maven` installed.
@@ -37,14 +39,17 @@ $ mvn install -B -ntp -DskipTests=true -f pom.xml
 $ java -jar target/blast-1.0.jar
 ```
 
+Starts on port `:8080`
+
 ## 🚧 API
 
 `blast` has only a single endpoint at `/api/v1/mail/send` to send mails.
 
-| Argument | Description |
+| Argument (required) | Description |
 | --- | --- |
 | `host`: string | The hostname of the mail server (mail.myhost.com) |
 | `port`: integer | The port of the mail server (default: 25) |
+| `starttls`: boolean | Enable tls if your mailserver supports it |
 | `auth`: object | json object with `mail` and `password` |
 | `message`: object | json object with `recipient`, `subject` and `text` |
 
@@ -58,16 +63,17 @@ fetch("http://myhost.com:8082/api/v1/mail/send", {
         'Content-Type': 'application/json',
     },
     body: JSON.stringify({
-        'host': "mail.myhost.com",
+        'host': 'mail.myhost.dev',
         'port': 25,
-        "auth": {
-            "mail": "noreply@myhost.com",
-            "password": "mypassword"
+        'starttls': false,
+        'auth': {
+            'mail': 'noreply@myhost.dev',
+            'password': 'mypassword'
         },
-        "message": {
-            "recipient": "tosomeone@gmail.com",
-            "subject": "Foo",
-            "text": "Shit is getting real"
+        'message': {
+            'recipient': 'someone@gmail.com',
+            'subject': 'Foo',
+            'text': 'Shit is getting real'
         }
     })
 })
