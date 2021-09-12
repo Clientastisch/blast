@@ -1,13 +1,13 @@
 # blast
 
 <div align="center">
-  <a href="https://www.oracle.com/java/">
+  <a href="https://www.oracle.com/java/" target="_blank">
     <img
       src="https://img.shields.io/badge/Written%20in-java-%23EF4041?style=for-the-badge"
       height="30"
     />
   </a>
-  <a href="https://www.oracle.com/java/">
+  <a href="https://spring.io/" target="_blank">
     <img
       src="https://img.shields.io/badge/spring-boot-%27a147?style=for-the-badge"
       height="30"
