@@ -20,7 +20,6 @@ public class EmailController {
     @CrossOrigin
     @PostMapping("send")
     public ResponseEntity<Response> onSend(@RequestBody MailBody mailBody) {
-        log.info("preparing...");
 
         try {
             SmtpMailer mailer = new SmtpMailer(
@@ -28,7 +27,7 @@ public class EmailController {
                     mailBody.getPort(),
                     mailBody.isStarttls()
             );
-            
+
             mailer.createSession(
                     mailBody.getAuth().getMail(),
                     mailBody.getAuth().getPassword()
@@ -43,8 +42,6 @@ public class EmailController {
             log.error("Something went wrong: " + exception);
             return ResponseEntity.internalServerError().body(new ErrorResponse(exception.getMessage()));
         }
-
-        log.info("send!");
 
         return ResponseEntity.ok(null);
     }
