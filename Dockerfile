@@ -6,4 +6,5 @@ RUN mvn install -B -ntp -DskipTests=true -f pom.xml
 FROM gcr.io/distroless/java
 WORKDIR /home
 COPY --from=build /home/target/blast-1.0.jar /home/blast-1.0.jar
+EXPOSE 8080
 ENTRYPOINT ["java","-jar","blast-1.0.jar"]
