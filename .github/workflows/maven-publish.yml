@@ -33,5 +33,5 @@ jobs:
     - name: Upload java release
       uses: actions/upload-artifact@v2
       with:
-        name: NeuralNetwork.zip
+        name: blast.zip
         path: ./bin
